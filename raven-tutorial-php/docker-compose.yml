@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    build: ./web
+    ports:
+     - "80:80"
+    networks:
+      - platform
+    links:
+      - emissary
+
+  # emissary:
+  #   build: ./emissary
+  #   ports:
+  #    - "8080:8080"
+  #   networks:
+  #     - platform
+
+  emissary:
+    build: ./em
+    ports:
+     - "8080:80"
+    networks:
+      - platform
+
+networks:
+  platform:

@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  web:
+    build: ./web
+    ports:
+     - "80:80"
+    networks:
+      - platform
+    environment:
+      - DISCOURSE_ENABLE_CORS=true
+      - DISCOURSE_CORS_ORIGIN='*'
+    container_name: web
+
+  # emissary:
+  #   build: ./emissary
+  #   ports:
+  #    - "8080:8080"
+  #   networks:
+  #     - platform
+
+  emissary:
+    build: ./em
+    ports:
+     - "8080:80"
+    networks:
+      - platform
+    container_name: emissary
+
+networks:
+  platform:
+
+    #apt-get install -y vim-tiny
